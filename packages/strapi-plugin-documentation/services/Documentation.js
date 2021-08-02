@@ -1509,6 +1509,8 @@ module.exports = {
         return 'date-time';
       case 'password':
         return 'password';
+      case 'email':
+        return 'email';
       default:
         return undefined;
     }
