@@ -550,6 +550,7 @@ module.exports = {
           maxLength,
           minLength,
           enum: enumeration,
+          regex,
         } = attribute;
 
         if (attribute.required === true) {
@@ -650,6 +651,7 @@ module.exports = {
             maxLength,
             minLength,
             enum: enumeration,
+            pattern: regex
           };
         }
 
