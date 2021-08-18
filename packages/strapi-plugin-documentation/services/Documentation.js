@@ -373,7 +373,7 @@ module.exports = {
 
         return acc;
       },
-      { required: ['id'], properties: { id: { type: 'string' } } }
+      { required: ['id'], properties: { id: { type: 'integer' } } }
     );
   },
 
@@ -657,7 +657,7 @@ module.exports = {
 
         return acc;
       },
-      { required: ['id'], properties: { id: { type: 'string' } } }
+      { required: ['id'], properties: { id: { type: 'integer' } } }
     );
   },
 
