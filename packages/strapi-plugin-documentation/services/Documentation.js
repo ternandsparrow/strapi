@@ -1043,9 +1043,9 @@ module.exports = {
                 _.get(mainComponent, ['properties', current, 'type']) !== undefined;
 
               if (isArrayProperty) {
-                acc[current] = { type: 'array', items: { type: 'string' } };
+                acc[current] = { type: 'array', items: { type: 'integer' } };
               } else {
-                acc[current] = { type: 'string' };
+                acc[current] = { type: 'integer' };
               }
             } else {
               // If the field is not an association we take the one from the component
