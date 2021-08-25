@@ -110,7 +110,7 @@ const createRelationValidator = createOrUpdate => (attr, data, { isDraft }) => {
   if (Array.isArray(data)) {
     validator = yup.array().of(yup.mixed());
   } else {
-    validator = yup.number().integer();
+    validator = yup.mixed();
   }
   validator = addRequiredValidation(createOrUpdate)(!isDraft && attr.required, validator);
 
