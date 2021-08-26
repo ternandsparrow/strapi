@@ -1737,6 +1737,23 @@ module.exports = {
   },
 
   /**
+   * Retrieves the entire full_documentation.json as an object. Uses the most recent
+   * version, with overrides applied
+   */
+  retrieveFullDocumentation: function() {
+    try {
+      const doc = JSON.parse(
+        fs.readFileSync(
+          path.resolve(this.getFullDocumentationPath(), this.getDocumentationVersion(), 'full_documentation.json')
+        )
+      );
+      return doc;
+    } catch (err) {
+      return null;
+    }
+  },
+
+  /**
    * Retrieve all documentation files from either the APIs or the plugins
    * @param {Boolean} isPlugin
    * @returns {Array}
