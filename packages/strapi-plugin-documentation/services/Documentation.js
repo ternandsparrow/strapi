@@ -1300,7 +1300,7 @@ module.exports = {
           description: '',
           deprecated: false,
           required: true,
-          schema: { type: 'string' },
+          schema: current.name === 'id' ? { type: 'integer' } : { type: 'string' },
         };
 
         return acc.concat(param);
