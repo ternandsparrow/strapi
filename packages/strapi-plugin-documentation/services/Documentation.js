@@ -1302,6 +1302,8 @@ module.exports = {
           required: true,
           schema: current.name === 'id' ? { type: 'integer' } : { type: 'string' },
         };
+        // Using name to set expected type to int, as Strapi uses autoincremented integers as primary keys
+        // for path parameters, the default generated instances are named id and relate to a primary ley
 
         return acc.concat(param);
       }, []);
