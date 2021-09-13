@@ -1045,7 +1045,33 @@ module.exports = {
               if (isArrayProperty) {
                 acc[current] = { type: 'array', items: { type: 'integer' } };
               } else {
-                acc[current] = { type: 'integer' };
+                // check if it's a LUT
+                console.log(`tag:${tag}. current: ${current}`)
+                
+                // console.log(_.find(modelAssociations, ['alias', current]))
+
+                // console.log('model: ' + _.find(modelAssociations, ['alias', current])['model'])
+                let modelReference = _.find(modelAssociations, ['alias', current])['model']
+
+                if(typeof modelReference === 'string' && modelReference.match('^lut-')){
+                  // we do a query so that the luts will be displayed as enums
+                  strapi.query(modelReference).find().then(result => {
+                    // console.log(result)
+                    let lutEnum = []
+                    result.forEach(element => {
+                      lutEnum.push(element['symbol'])
+                    });
+                    acc[current] = { type: 'string', 'enum':lutEnum }
+                    console.log(acc[current])
+                  })
+                }
+                else{
+                  acc[current] = { type: 'integer' };
+                }
+
+
+
+
               }
             } else {
               // If the field is not an association we take the one from the component
